@@ -4,18 +4,30 @@
 # 程序源代码
 # ======================================================
 
-score = int(input("输入分数：\n"))
-if score > 90:
-    grade = 'A'
-elif score >= 60:
-    grade = 'B'
-else:
-    grade = 'C'
+from sys import stdout
 
-print('%d 属于 %s' %(score, grade))
+for j in range(2, 1001):
+    k = []  # 用来保存因子集
+    n = -1  # 保存的是因子的下标
+    s = j   # 用来保存计算中产生的中间变量
+    for i in range(1, j):
+        if j % i == 0:
+            n += 1
+            s -= i  # 因子之和
+            k.append(i)
+
+    if s == 0:
+        print(j)    # 打印出完数
+        for i in range(n):
+            stdout.write(str(k[i]) + ' ')
+        print(k[n])
 
 # ======================================================
 
 # 输出结果:
-# 89
-# 89 属于 B
+# 6
+# 1 2 3
+# 28
+# 1 2 4 7 14
+# 496
+# 1 2 4 8 16 31 62 124 248
